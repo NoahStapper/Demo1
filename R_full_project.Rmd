@@ -17,4 +17,34 @@ ggplot(data = earthquake) +
 For low and high depth there can be high magnitude but not for medium depth (250-400)
 
 
+---
+title: "Earthquake pipeline 2"
+output: html_notebook
+---
 
+How often do earth quakes of different magnitudes happen?
+
+```{r}
+
+earthquake <-read_csv("earthquakes.csv")
+
+number_of_quakes <- earthquake %>%
+  summarize(date = n())
+
+quake_depth_adapted <- earthquake %>%
+mutate(
+depth_km = depth/1000
+)
+  
+
+quake_depth_adapted <- earthquake %>%
+mutate(
+depth_km = depth/1000,
+depth_text = paste(depth, "meter", sep=" ")
+)
+
+ggplot(data = earthquake) + 
+  geom_point(mapping=aes(x=magnitude5, y=magnitude6)) 
+         
+
+```
