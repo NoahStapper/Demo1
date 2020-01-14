@@ -1,1 +1,20 @@
+---
+title: "Depth vs Magnitude"
+output: html_notebook
+---
+
+Is there a relation between the depth and the magnitude of earthquakes?
+
+```{r}
+
+earthquake <-read_csv("earthquakes.csv") 
+  
+ggplot(data = earthquake) + 
+  geom_point(mapping=aes(x=magnitude, y=depth)) 
+         
+         
+```
+For low and high depth there can be high magnitude but not for medium depth (250-400)
+
+
 
